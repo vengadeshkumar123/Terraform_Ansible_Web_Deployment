@@ -1,0 +1,24 @@
+---
+- name: Deploy Festival Website
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Install Nginx
+      ansible.builtin.dnf:
+        name: nginx
+        state: present
+
+    - name: Start and enable Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+
+    - name: Copy website files
+      ansible.builtin.copy:
+        src: "{{ playbook_dir }}/../web/Festaval-live-1.0.0/"
+        dest: /usr/share/nginx/html/
+        owner: root
+        group: root
+        mode: preserve
