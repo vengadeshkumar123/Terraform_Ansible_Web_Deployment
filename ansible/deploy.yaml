@@ -4,8 +4,12 @@
   become: true
 
   tasks:
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: true
+
     - name: Install Nginx
-      ansible.builtin.dnf:
+      ansible.builtin.apt:
         name: nginx
         state: present
 
@@ -17,8 +21,8 @@
 
     - name: Copy website files
       ansible.builtin.copy:
-        src: "{{ playbook_dir }}/../web/Festaval-live-1.0.0/"
-        dest: /usr/share/nginx/html/
+        src: "{{ playbook_dir }}/../web/FestavaLive-1.0.0/"
+        dest: /var/www/html/
         owner: root
         group: root
         mode: preserve

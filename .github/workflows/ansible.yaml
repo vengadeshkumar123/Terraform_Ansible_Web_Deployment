@@ -56,6 +56,6 @@ jobs:
           ansible-playbook \
             -i "$EC2_IP," \
             ansible/deploy.yaml \
-            -u  ubuntu \
+            -u ubuntu \
             --private-key ~/.ssh/practice.pem \
             --ssh-extra-args="-o StrictHostKeyChecking=no"
