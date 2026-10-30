@@ -1,6 +1,6 @@
 ---
 - name: Deploy Festival Website
-  hosts: web
+  hosts: all
   become: true
 
   tasks:
